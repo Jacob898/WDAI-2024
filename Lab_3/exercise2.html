@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generator Haseł</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<h1>Generator Haseł</h1>
+<form id="passwordForm">
+    <label>
+        Minimalna długość hasła:
+        <input type="number" id="passwordMinLength" placeholder="podaj liczbę" required>
+    </label>
+    <label>
+        Maksymalna długość hasła:
+        <input type="number" id="passwordMaxLength" placeholder="podaj liczbę" required>
+    </label>
+    <label>
+        <input type="checkbox" id="includeUppercase"> Czy hasło ma zawierać wielkie litery?
+    </label>
+    <label>
+        <input type="checkbox" id="includeSpecial"> Czy hasło ma zawierać znaki specjalne?
+    </label>
+    <button type="button" id="generatePassword">Wygeneruj hasło</button>
+</form>
+
+<script src="generator.js"></script>
+</body>
+</html>
