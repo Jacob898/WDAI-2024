@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zombie Shooter</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: comic sans ms,serif;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #game-canvas {
+      position: relative;
+      display: block;
+      background: url("images/board-bg.jpg") no-repeat center center;
+      background-size: cover;
+      border: 2px solid white;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    div {
+      color : black;
+      padding : 20px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      top: calc(50% - 70px);
+      left: calc(50%- 120px);
+      position: absolute;
+      width : 200px;
+      height : 100px;
+      background-color: rgba(127, 255, 212, 0.8)
+
+    }
+    div >* {
+      margin : 10px;
+    }
+    #game-reset-container {
+      display: none;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<canvas id="game-canvas"></canvas>
+
+<div id="game-start-container">
+    Witaj w grze zombie shooter!!!!!!!!!!
+  <button id="start-button">Rozpocznij grę</button>
+</div>
+
+<div id="game-reset-container">
+    Przegrałeś!!!!!!: twój wynik to:
+    <span id="total-score"></span>
+    <button id="reset-button">Resetuj grę</button>
+</div>
+
+
+<script src="game.js"></script>
+</body>
+
+</html>
