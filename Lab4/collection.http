@@ -1,25 +1,3 @@
-### Get all books
-GET http://localhost:3000/api/books
-
-### Add book
-POST http://localhost:3000/api/books
-Content-Type: application/json
-
-{
-  "title": "Diuna",
-  "author": "Frank Herbert",
-  "year": 1965
-}
-
-### Get book at given ID
-GET http://localhost:3000/api/books/7
-
-### Delete book at given ID
-DELETE http://localhost:3000/api/books/5
-
-
-
-
 ### Create Account
 POST http://localhost:3001/api/register
 Content-Type: application/json
@@ -38,7 +16,26 @@ Content-Type: application/json
   "password": "admin"
 }
 
+### Get all books
+GET http://localhost:3000/api/books
 
+### Add book
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImVtYWlsIjoidXNlcjJAZW1haWwuY29tIiwicGFzc3dvcmQiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsImlhdCI6MTczMzc1MDMyOX0.f0IHPvImUQoghkIYfX2hlsEQTbygZEOD7DiaanK67bM
+
+{
+  "title": "Dziady część II",
+  "author": "Adam Mickiewicz",
+  "year": 1823
+}
+
+### Get book at given ID
+GET http://localhost:3000/api/books/10
+
+### Delete book at given ID
+DELETE http://localhost:3000/api/books/4
+Authorization: Bearer eyJhbGIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImVtYWlsIjoidXNlcjJAZW1haWwuY29tIiwicGFzc3dvcmQiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsImlhdCI6MTczMzc1MjM2MH0.sy2cVwFBOb7wwcOb65rZLJJEzpGwTGiA8vsRlk2LSz4
 
 
 ### Get all of user's orders
@@ -48,19 +45,22 @@ Accept: application/json
 ### Add an order
 POST http://localhost:3002/api/orders
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImVtYWlsIjoidXNlcjJAZW1haWwuY29tIiwicGFzc3dvcmQiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsImlhdCI6MTczMzc1MjM2MH0.sy2cVwFBOb7wwcOb65rZLJJEzpGwTGiA8vsRlk2LSz4
 
 {
   "userID": 2,
-  "bookID": 9,
-  "quantity": 2
+  "bookID": 8,
+  "quantity": 3
 }
 
 ### Delete an order
-DELETE http://localhost:3002/api/orders/4
+DELETE http://localhost:3002/api/orders/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImVtYWlsIjoidXNlcjJAZW1haWwuY29tIiwicGFzc3dvcmQiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsImlhdCI6MTczMzc1MjM2MH0.sy2cVwFBOb7wwcOb65rZLJJEzpGwTGiA8vsRlk2LSz4
 
 ### Update an order
 PATCH http://localhost:3002/api/orders/1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImVtYWlsIjoidXNlcjJAZW1haWwuY29tIiwicGFzc3dvcmQiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsImlhdCI6MTczMzc1MjM2MH0.sy2cVwFBOb7wwcOb65rZLJJEzpGwTGiA8vsRlk2LSz4
 
 {
   "bookID": 6,

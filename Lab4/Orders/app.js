@@ -1,13 +1,28 @@
+require('dotenv').config();
 const express= require('express');
 const { Sequelize, DataTypes } = require('sequelize');
+const jwt = require('jsonwebtoken');
 const app = express();
-
 app.use(express.json());
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: 'orders.db',
 });
+
+function verifyToken(req, res, next) {
+    const token = req.header('Authorization');
+    if (!token) {
+        return res.status(403).json('No token provided');
+    }
+
+    try {
+        req.user = jwt.verify(token.split(" ")[1], process.env.ACCESS_TOKEN_SECRET);
+        next();
+    } catch (error) {
+        return res.status(401).json('Invalid token');
+    }
+}
 
 const Order = sequelize.define('Order', {
     orderID: {type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true},
@@ -16,7 +31,9 @@ const Order = sequelize.define('Order', {
     quantity: { type: DataTypes.INTEGER, allowNull: false },
 })
 
-sequelize.sync();
+sequelize.sync()
+    .then(() => console.log('Database Synced'))
+    .catch((error) => console.error('Error occured while syncing:',error));
 
 //get all Orders of one user
 
@@ -36,7 +53,7 @@ app.get("/api/orders/:id", async (req, res) => {
 
 // add an order
 
-app.post("/api/orders", async (req, res) => {
+app.post("/api/orders", verifyToken, async (req, res) => {
     try {
         const { userID, bookID, quantity } = req.body;
 
@@ -57,6 +74,7 @@ app.post("/api/orders", async (req, res) => {
 
         const newOrder = await Order.create({userID, bookID, quantity});
         res.status(201).json({orderID: newOrder.orderID});
+
     } catch (error) {
         console.error("Error occured while adding the order: ", error);
         return res.status(500).send("Internal Server Error");
@@ -65,7 +83,7 @@ app.post("/api/orders", async (req, res) => {
 
 //delete an order
 
-app.delete("/api/orders/:id", async (req, res) => {
+app.delete("/api/orders/:id", verifyToken, async (req, res) => {
     try {
         const order = await Order.findByPk(req.params.id);
         if (!order) {
@@ -87,7 +105,7 @@ app.delete("/api/orders/:id", async (req, res) => {
 
 //update an order
 
-app.patch("/api/orders/:id", async (req, res) => {
+app.patch("/api/orders/:id", verifyToken,    async (req, res) => {
     try {
         const order = await Order.findByPk(req.params.id);
         if (!order) {

@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express= require('express');
 const { Sequelize, DataTypes} = require('sequelize');
+const jwt = require("jsonwebtoken");
 const app = express();
 app.use(express.json());
 
@@ -36,9 +38,10 @@ app.post('/api/register', async (req, res) => {
 app.post('/api/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-        const user = await User.findOne({where: {email,password} });
-        if (user) {
-            res.status(200).json({message: 'Logged in successfully'});
+        const user = await User.findOne({where: {email} });
+        if (user && password === user.password) {
+            const accessToken = jwt.sign(user.toJSON(), process.env.ACCESS_TOKEN_SECRET)
+            res.status(200).json({message: 'Logged in successfully', accessToken: accessToken});
         } else {
             res.status(401).json({message: 'Invalid email or password'});
         }
