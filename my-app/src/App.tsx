@@ -9,6 +9,10 @@ import Logowanie from "./components/formularze/Logowanie.tsx";
 import Ternary from "./components/inne/Ternary.tsx";
 import Aktualizacja from "./components/inne/Aktualizacja.tsx";
 import Studenci from "./components/studenci/Studenci.tsx";
+import StudentManager from "./components/studenci/StudentManager.tsx";
+import LicznikEfekty from "./efekty/LicznikEfekty.tsx";
+import Tytul from "./efekty/Tytul.tsx";
+import Odliczanie from "./efekty/Odliczanie.tsx";
 
 function App() {
   return (
@@ -23,6 +27,10 @@ function App() {
           <Ternary />
           <Aktualizacja />
           <Studenci />
+          <StudentManager />
+          <LicznikEfekty />
+          <Tytul />
+          <Odliczanie />
       </div>
   )
 }

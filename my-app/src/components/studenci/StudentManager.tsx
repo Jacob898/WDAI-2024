@@ -1,4 +1,5 @@
-
+import React from "react";
+import Dodawanie from "./Dodawanie";
 interface Student {
     imie: string;
     nazwisko: string;
@@ -6,23 +7,23 @@ interface Student {
 }
 
 
-const Studenci = () => {
+const StudentManager = () => {
 
-    const Students:Student[] = [
+    const [students, setStudents] = React.useState<Student[]>([
         {imie: "Luke",nazwisko: "Skywalker",rocznik: 2000},
         {imie: "Han", nazwisko: "Solo", rocznik: 1995},
         {imie: "Leia", nazwisko: "Organa", rocznik: 2000}
-    ]
+    ]);
 
     return(
-
+        <>
         <table>
             <tr>
                 <th>Imię</th>
                 <th>Nazwisko</th>
                 <th>Rocznik</th>
             </tr>
-            {Students.map((student, index) => (
+            {students.map((student, index) => (
                 <tr key={index}>
                     <td>{student.imie}</td>
                     <td>{student.nazwisko}</td>
@@ -30,7 +31,9 @@ const Studenci = () => {
                 </tr>
             ))}
         </table>
+        <Dodawanie setStudents={setStudents} />
+        </>
     )
 }
 
-export default Studenci;
+export default StudentManager;
