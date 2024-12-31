@@ -56,8 +56,22 @@ app.get("/api/orders/:id", async (req, res) => {
 app.post("/api/orders", verifyToken, async (req, res) => {
     try {
         const { userID, bookID, quantity } = req.body;
+        //TODO - checking if user exists
+        try {
+            const userExistsResponse = await fetch (`http://localhost:3000/api/books/${bookID}`)
+            if(!bookExistsResponse.ok) {
+                return res.status(400).send("Book does not exist");
+            }
+            const bookExists = await bookExistsResponse.json();
+            if (!bookExists) {
+                return res.status(400).send("Book does not exist");
+            }
+        } catch (error) {
+            console.error("Error occured while checking if book exists: ", error);
+            return res.status(500).send("Internal Server Error");
+        }
 
-        //checking if book exist
+        //checking if book exists
         try {
             const bookExistsResponse = await fetch (`http://localhost:3000/api/books/${bookID}`)
             if(!bookExistsResponse.ok) {

@@ -3,7 +3,7 @@ POST http://localhost:3001/api/register
 Content-Type: application/json
 
 {
-  "email": "user2@email.com",
+  "email": "user3@email.com",
   "password": "admin"
 }
 
@@ -45,10 +45,10 @@ Accept: application/json
 ### Add an order
 POST http://localhost:3002/api/orders
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImVtYWlsIjoidXNlcjJAZW1haWwuY29tIiwicGFzc3dvcmQiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsImlhdCI6MTczMzc1MjM2MH0.sy2cVwFBOb7wwcOb65rZLJJEzpGwTGiA8vsRlk2LSz4
+Authorization: Bearer eyJtthbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImVtYWlsIjoidXNlcjJAZW1haWwuY29tIiwicGFzc3dvcmQiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMTItMDhUMTM6MjM6MDAuMzEzWiIsImlhdCI6MTczMzc2Mzk4OX0.rKJ6R1tLXUQj7OSBpGITqFWY0YpAeaPlAoJ6rXfV20Q
 
 {
-  "userID": 2,
+  "userID": 2666,
   "bookID": 8,
   "quantity": 3
 }
