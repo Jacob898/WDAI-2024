@@ -13,6 +13,8 @@ import StudentManager from "./components/studenci/StudentManager.tsx";
 import LicznikEfekty from "./efekty/LicznikEfekty.tsx";
 import Tytul from "./efekty/Tytul.tsx";
 import Odliczanie from "./efekty/Odliczanie.tsx";
+// import Komentarz from "./components/produkty/Komentarz.tsx";
+import Komentarze from "./components/produkty/Komentarze.tsx";
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
           <LicznikEfekty />
           <Tytul />
           <Odliczanie />
+          {/*<Komentarz id={101} body={"Przykładowy komentarz"} postID={10} likes={15} user={"Example User"} />*/}
+          <Komentarze />
       </div>
   )
 }
